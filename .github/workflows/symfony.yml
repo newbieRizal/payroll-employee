@@ -36,24 +36,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist 
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Create Database
       run: |
         mkdir -p data
         touch data/database.sqlite
-    - name: Set ENV
-      env:
-        DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
-        APP_NAME: Laravel
-        APP_ENV: local
-        APP_KEY: base64:n3kybW/LcPH+FD/pnpu36pQwDhdRGl92TwJgFjejYdo
-        APP_DEBUG: false
-        APP_URL: http://127.0.0.1:8000
-        
-        LOG_CHANNEL: stack
-        LOG_DEPRECATIONS_CHANNEL: 1
-        LOG_LEVEL: debug
-        DB_CONNECTION: sqlite
     - name: Then Generate Application Key
       run: php artisan key:generate
     - name: Then Migrate the database
@@ -63,36 +50,4 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
-        APP_NAME: Laravel
-        APP_ENV: local
-        APP_KEY: base64:n3kybW/LcPH+FD/pnpu36pQwDhdRGl92TwJgFjejYdo
-        APP_DEBUG: false
-        APP_URL: http://127.0.0.1:8000
-        
-        LOG_CHANNEL: stack
-        LOG_DEPRECATIONS_CHANNEL: 1
-        LOG_LEVEL: debug
-        
-        DB_CONNECTION: sqlite
-        # DB_HOST: 127.0.0.1
-        # DB_PORT: 3306
-        # DB_DATABASE: payroll
-        # DB_USERNAME: root
-        # DB_PASSWORD:
-        
-        BROADCAST_DRIVER: log
-        CACHE_DRIVER: file
-        FILESYSTEM_DISK: local
-        QUEUE_CONNECTION: sync
-        SESSION_DRIVER: file
-        SESSION_LIFETIME: 120
-        
-        MEMCACHED_HOST: 127.0.0.1
-        
-        MIX_PUSHER_APP_KEY: "${PUSHER_APP_KEY}"
-        MIX_PUSHER_APP_CLUSTER: "${PUSHER_APP_CLUSTER}"
-        run: vendor/bin/phpunit
-
-    # - name: Run PHP
-    #   run: php artisan serve
-      # run: vendor/bin/phpunit
+      run: vendor/bin/phpunit
