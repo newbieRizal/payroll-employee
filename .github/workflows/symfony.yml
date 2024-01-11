@@ -41,12 +41,16 @@ jobs:
       run: |
         mkdir -p data
         touch data/database.sqlite
+      env:
+          DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
     - name: Then Generate Application Key
       run: php artisan key:generate
     - name: Then Migrate the database
-      run: php artisan migrate
+      run: php artisan migrate --force
     - name: create Permissions that assign to Role
-      run: php artisan db:seed --class=PermissionTableSeeder
+      run: php artisan db:seed --class=PermissionTableSeeder --force
+    - name: Super admin
+      run: php artisan db:seed --class=CreateSuperAdminUserSeeder --force
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
