@@ -58,3 +58,4 @@ Route::group(['middleware' => 'auth', 'prefix' => 'advance/cash/', 'as' => 'cash
     Route::post('/update/{id}', [CashAdvanceController::class,'update'])->name('.update');
     Route::post('/fetch_data',[CashAdvanceController::class,'fetch_data'])->name('.fetch_data');
 });
+

@@ -67,7 +67,7 @@
                         </div>
                         <div class="account-footer">
 
-                           <p>Don't have an account yet? <a href="register">Register</a></p>
+                           <p>Don't have an account yet? <a href="/register">Register</a></p>
 
                         </div>
                      </form>
