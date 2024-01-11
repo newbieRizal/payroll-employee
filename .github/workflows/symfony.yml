@@ -41,6 +41,25 @@ jobs:
       run: |
         mkdir -p data
         touch data/database.sqlite
+    - name: Set ENV
+      env:
+        DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
+        APP_NAME: Laravel
+        APP_ENV: local
+        APP_KEY: base64:n3kybW/LcPH+FD/pnpu36pQwDhdRGl92TwJgFjejYdo
+        APP_DEBUG: false
+        APP_URL: http://127.0.0.1:8000
+        
+        LOG_CHANNEL: stack
+        LOG_DEPRECATIONS_CHANNEL: 1
+        LOG_LEVEL: debug
+        DB_CONNECTION: sqlite
+    - name: Then Generate Application Key
+      run: php artisan key:generate
+    - name: Then Migrate the database
+      run: php artisan migrate
+    - name: create Permissions that assign to Role
+      run: php artisan db:seed --class=PermissionTableSeeder
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
@@ -70,16 +89,10 @@ jobs:
         
         MEMCACHED_HOST: 127.0.0.1
         
-        
         MIX_PUSHER_APP_KEY: "${PUSHER_APP_KEY}"
         MIX_PUSHER_APP_CLUSTER: "${PUSHER_APP_CLUSTER}"
-        
-    - name: Then Generate Application Key
-      run: php artisan key:generate
-    - name: Then Migrate the database
-      run: php artisan migrate
-    - name: create Permissions that assign to Role
-      run: php artisan db:seed --class=PermissionTableSeeder
-    - name: Run PHP
-      run: php artisan serve
+        run: vendor/bin/phpunit
+
+    # - name: Run PHP
+    #   run: php artisan serve
       # run: vendor/bin/phpunit
