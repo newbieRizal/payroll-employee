@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Work Types
+    Jenis Pekerjaan
 @endsection
 
 @section('content')
@@ -16,11 +16,11 @@
     @endif
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="page-title">WorkTypes</h3>
+        <h3 class="page-title">Jenis Pekerjaan</h3>
       </div>
       <div class="col-auto float-right ml-auto">
         @can('worktype-create')
-        <a href="{{ route('worktypes.create') }}" class="btn add-btn add-worktype"> Add </a>
+        <a href="{{ route('worktypes.create') }}" class="btn add-btn add-worktype"> Tambah </a>
         @endcan
       </div>
     </div>
@@ -31,10 +31,10 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Created At</th>
-                <th>Action</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Dibuat Pada</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@
 @section('scripts')
 <script>
      $(function () {
-      
+
       var table = $('.data-table').DataTable({
           processing: false,
           serverSide: true,
@@ -61,8 +61,8 @@
               {data: 'action', name: 'action', orderable: false,searchable: false},
           ]
       });
-      
-      
+
+
     });
 </script>
 @endsection

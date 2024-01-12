@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-<meta name="csrf-token" content="BQ83g4Xb5gQKQjxatLjQYYs1EhAQt5LqxwQdJ6ti">
+<meta name="csrf-token" content="wFeq8TOfJr1O0jRG4ODhqNsCURmMt02JSLhd4wPa">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 <meta name="description" content="Smarthr - Bootstrap Admin Template">
 <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-<title>Dashboard Menu | SuperAdmin
+<title>Dashboard | SuperAdmin
 </title>
 <link rel="shortcut icon" type="image/x-icon" href="http://127.0.0.1:8000/assets/img/favicon.jpg">        <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/font-awesome.min.css">
@@ -59,7 +59,7 @@
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">Logout</a>
             <form id="logout-form" style="display:none;" action="http://127.0.0.1:8000/logout" method="POST">
-               <input type="hidden" name="_token" value="BQ83g4Xb5gQKQjxatLjQYYs1EhAQt5LqxwQdJ6ti">            </form>
+               <input type="hidden" name="_token" value="wFeq8TOfJr1O0jRG4ODhqNsCURmMt02JSLhd4wPa">            </form>
          </div>
       </li>
    </ul>
@@ -76,47 +76,48 @@
     <div class="sidebar-inner slimscroll">
        <div id="sidebar-menu" class="sidebar-menu">
           <ul>
-                          <li class="active">
-                <a href="http://127.0.0.1:8000/home"><i class="la la-dashboard"></i> <span>Dashboard</span></a>
+                          <li class="">
+                <a href="http://127.0.0.1:8000/home"><i class="la la-dashboard"></i> <span>Dasbor</span></a>
              </li>
                                        <li class="submenu">
-               <a href="javascript:void(0);"><i class="la la-users"></i> </i> <span> Users</span> <span class="menu-arrow"></span></a>
+               <a href="javascript:void(0);"><i class="la la-users"></i> </i> <span> Pengguna</span> <span class="menu-arrow"></span></a>
              <ul>
-                         <li> 
-               <a href="http://127.0.0.1:8000/users"   class=""><span>Users</span></a>
+                         <li>
+               <a href="http://127.0.0.1:8000/users"   class=""><span>Pengguna</span></a>
             </li>
-                                     <li> 
-               <a href="http://127.0.0.1:8000/users/create" class=""><span>Create</span></a>
+                                     <li>
+               <a href="http://127.0.0.1:8000/users/create" class=""><span>Buat</span></a>
             </li>
                          </ul>
              </li>
                         <li class="submenu">
-               <a href="javascript:void(0);"><i class="las la-user-tag"></i><span> Manage</span> <span class="menu-arrow"></span></a>
+               <a href="javascript:void(0);"><i class="las la-user-tag"></i><span> Kelola</span> <span class="menu-arrow"></span></a>
                <ul>
-                  <li><a href="http://127.0.0.1:8000/roles" class="">Roles</a></li>
-                  
-                                    <li><a href="http://127.0.0.1:8000/roles/create" class="">Create</a></li>
+                  <li><a href="http://127.0.0.1:8000/roles" class="">Pangkat</a></li>
+
+                                    <li><a href="http://127.0.0.1:8000/roles/create" class="">Buat</a></li>
                                  </ul>
             </li>
                         
                     <li class="submenu">
             <a href="javascript:void(0);"><i class="las la-briefcase"></i><span> WorkTypes</span> <span class="menu-arrow"></span></a>
             <ul>
-               <li><a href="http://127.0.0.1:8000/worktypes" class="">WorkTypes</a></li>
-                              <li><a href="http://127.0.0.1:8000/worktypes/create" class="">Create</a></li>
+               <li><a href="http://127.0.0.1:8000/worktypes" class="">Jenis Pekerjaan</a></li>
+                              <li><a href="http://127.0.0.1:8000/worktypes/create" class="">Buat</a></li>
                            </ul>
          </li>
-                  
          
+
                    </ul>
        </div>
     </div>
- </div>            <div class="page-wrapper">
+ </div>
+            <div class="page-wrapper">
                 <div class="content container-fluid">
                     <div class="page-header">
     <div class="row">
         <div class="col-sm-12">
-            <h3 class="page-title">Welcome Super Admin!</h3>
+            <h3 class="page-title">Selamat datang Super Admin!</h3>
         </div>
     </div>
 </div>
@@ -127,8 +128,8 @@
             <div class="card-body">
                 <span class="dash-widget-icon"><i class="fa fa-users"></i></span>
                 <div class="dash-widget-info">
-                    <h3>2</h3>
-                    <span>Employees</span>
+                    <h3>4</h3>
+                    <span>Karyawan</span>
                 </div>
             </div>
         </div>
@@ -139,7 +140,7 @@
                 <span class="dash-widget-icon"><i class="las la-user-tie"></i></span>
                 <div class="dash-widget-info">
                     <h3>1</h3>
-                    <span>Managers</span>
+                    <span>Manajer</span>
                 </div>
             </div>
         </div>
@@ -152,7 +153,7 @@
             <div class="col-md-6 text-center">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Total Revenue</h3>
+                        <h3 class="card-title">Total Pendapatan</h3>
                         <div id="bar-charts"></div>
                     </div>
                 </div>
@@ -160,7 +161,7 @@
             <div class="col-md-6 text-center">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Sales Overview</h3>
+                        <h3 class="card-title">Tinjauan Penjualan</h3>
                         <div id="line-charts"></div>
                     </div>
                 </div>

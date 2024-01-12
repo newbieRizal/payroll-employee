@@ -1,17 +1,17 @@
 @extends('layouts.app')
 @section('title')
-Show User    
+Tampilkan Pengguna
 @endsection
 @section('content')
 <!-- Page Header -->
 <div class="page-header">
    <div class="row align-items-center">
       <div class="col">
-         <h3 class="page-title">{{ $user->name }}'s Details :</h3>
+         <h3 class="page-title">{{ $user->name }}'s Detail :</h3>
          <input type="hidden" name="user_id" value="{{ $user->id }}" id="user_id">
       </div>
       <div class="col-auto float-right ml-auto">
-         <button onclick="history.back()" class="btn add-btn"> Back </button>
+         <button onclick="history.back()" class="btn add-btn"> Kembali </button>
       </div>
    </div>
 </div>
@@ -39,10 +39,10 @@ Show User
                <thead>
                   <tr>
                      <th>#</th>
-                     <th>Work Type</th>
-                     <th>Assign Date</th>
-                     <th>Qty</th>
-                     <th>Price</th>
+                     <th>Jenis Pekerjaan</th>
+                     <th>Tetapkan Tanggal</th>
+                     <th>Jumlah</th>
+                     <th>Harga</th>
                      <th>Total</th>
                   </tr>
                </thead>
@@ -125,7 +125,7 @@ Show User
       });
 
       jQuery(document).on('click', '#refresh', function() {
-         
+
          var _token = $("input[name='_token']").val();
          var user_id = $('#user_id').val();
          var from_date = $('input[name=start]').val();

@@ -35,7 +35,7 @@ class CashAdvanceController extends Controller
         $advcashdata = CashAdvance::query()->with('user')->orderBy('id','desc');
 
         $advcashdata = $advcashdata->whereHas("user",function ($query){
-            $query->where('parent_id','=',auth()->user()->id); 
+            $query->where('parent_id','=',auth()->user()->id);
         });
 
         $data = [
@@ -45,43 +45,43 @@ class CashAdvanceController extends Controller
         if ($request->ajax()) {
             $data =  $advcashdata;
             return Datatables::of($data)
-                      
+
                     ->addIndexColumn()
-                    
+
                     ->addColumn('user_name', function($data){
-   
+
                            $user_name = '<a href="'.route('users.show',$data->user->id).'" style="color:black;"><span>'.$data->user->name.'</span></a>';
-     
+
                           return $user_name;
                     })
                     ->addColumn('date_advance', function($data){
-   
+
                            $date_advance = date('d-m-Y',strtotime($data->date_advance));
-     
+
                           return $date_advance;
                     })
 
                     ->addColumn('action', function($data){
-                        
+
                         $btn = '';
 
                         if(auth()->user()->can('cash-edit')){
-                           $btn .= '<a  href="'.route('cash.edit',$data->id).'" class="btn btn-sm mr-2 btn-primary show-worktypes"><i class="las la-edit"></i></a>'; 
+                           $btn .= '<a  href="'.route('cash.edit',$data->id).'" class="btn btn-sm mr-2 btn-primary show-worktypes"><i class="las la-edit"></i></a>';
                         }
 
                         if(auth()->user()->can('cash-delete')){
                            $btn .= '<a  href="'.route('cash.destroy',$data->id).'" class="btn btn-sm btn-primary show-worktypes"><i class="las la-trash"></i></a>';
-                        } 
-     
+                        }
+
                         return $btn;
                     })
 
                     ->rawColumns(['user_name'],['date_advance'],['action'])
-                    
+
                     ->make(true);
 
                 }
-        
+
         return view('advcash.index')->with($data);
     }
 
@@ -126,7 +126,7 @@ class CashAdvanceController extends Controller
         $CashAdvance->save();
 
 
-        return redirect()->route('cash.index')->with('success', 'Advance Cash added successfully'); 
+        return redirect()->route('cash.index')->with('success', 'Advance Cash added successfully');
     }
 
     /**
@@ -174,37 +174,37 @@ class CashAdvanceController extends Controller
         $CashAdvance->notes = $request->input('notes');
         $CashAdvance->save();
 
-            
+
         return redirect()->route('cash.index')->with('success', 'Advance Cash Emtry updated successfully');
-        
+
     }
 
 
     public function fetch_data(Request $request){
-        
+
         if($request->ajax())
         {
             if($request->from_date != '' && $request->to_date != '' && $request->ajaxtype == 'filter')
             {
                 $id = $request->user_id;
-                
+
                 $advancecash = CashAdvance::query()->where('user_id',$id)
                 ->whereBetween('date_advance', array($request->from_date, $request->to_date))
                 ->sum('amount');
 
-                $advancecash = '₹ '.number_format((float)$advancecash, 2, '.', '');
+                $advancecash = 'Rp '.number_format((float)$advancecash, 2, '.', '');
 
                 return Response::JSON(array('advancecash' => $advancecash));
 
             }else{
 
                 $id = $request->user_id;
-                
+
                 $advancecash = CashAdvance::query()->where('user_id',$id)
                 ->whereBetween('date_advance', array(date('Y-m-01'),date('Y-m-t')))
                 ->sum('amount');
 
-                $advancecash = '₹ '.number_format((float)$advancecash, 2, '.', '');
+                $advancecash = 'Rp '.number_format((float)$advancecash, 2, '.', '');
 
                 return Response::JSON(array('advancecash' => $advancecash));
 

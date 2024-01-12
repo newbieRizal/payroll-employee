@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-<meta name="csrf-token" content="2GIXaQZp5TmMNSh4bhEQx11mVxxwwSkAtXwltFTs">
+<meta name="csrf-token" content="wFeq8TOfJr1O0jRG4ODhqNsCURmMt02JSLhd4wPa">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 <meta name="description" content="Smarthr - Bootstrap Admin Template">
 <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-<title>Create Role
+<title>Buat Pangkat
 </title>
 <link rel="shortcut icon" type="image/x-icon" href="http://127.0.0.1:8000/assets/img/favicon.jpg">        <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/font-awesome.min.css">
@@ -48,83 +48,85 @@
          <div class="dropdown-menu">
             <a class="dropdown-item" href="http://127.0.0.1:8000/logout"
                onclick="event.preventDefault();
-               document.getElementById('logout-form').submit();">Logout</a>
+               document.getElementById('logout-form').submit();">Keluar</a>
             <form id="logout-form" style="display:none;" action="http://127.0.0.1:8000/logout" method="POST">
-               <input type="hidden" name="_token" value="2GIXaQZp5TmMNSh4bhEQx11mVxxwwSkAtXwltFTs">            </form>
+               <input type="hidden" name="_token" value="wFeq8TOfJr1O0jRG4ODhqNsCURmMt02JSLhd4wPa">            </form>
          </div>
       </li>
    </ul>
    <div class="dropdown mobile-user-menu">
       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
       <div class="dropdown-menu dropdown-menu-right">
-         <a class="dropdown-item" href="login.html">Logout</a>
+         <a class="dropdown-item" href="login.html">Keluar</a>
       </div>
    </div>
 </div>
 
-<div class="loader" style="background: url('http://127.0.0.1:8000/assets/img/loader/loading.gif') 
-50% 50% no-repeat transparent;"></div>            <div class="sidebar" id="sidebar">
+<div class="loader" style="background: url('http://127.0.0.1:8000/assets/img/loader/loading.gif')
+50% 50% no-repeat transparent;"></div>
+            <div class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
        <div id="sidebar-menu" class="sidebar-menu">
           <ul>
                           <li class="">
-                <a href="http://127.0.0.1:8000/home"><i class="la la-dashboard"></i> <span>Dashboard</span></a>
+                <a href="http://127.0.0.1:8000/home"><i class="la la-dashboard"></i> <span>Dasbor</span></a>
              </li>
                                        <li class="submenu">
-               <a href="javascript:void(0);"><i class="la la-users"></i> </i> <span> Users</span> <span class="menu-arrow"></span></a>
+               <a href="javascript:void(0);"><i class="la la-users"></i> </i> <span> Pengguna</span> <span class="menu-arrow"></span></a>
              <ul>
-                         <li> 
-               <a href="http://127.0.0.1:8000/users"   class=""><span>Users</span></a>
+                         <li>
+               <a href="http://127.0.0.1:8000/users"   class=""><span>Pengguna</span></a>
             </li>
-                                     <li> 
-               <a href="http://127.0.0.1:8000/users/create" class=""><span>Create</span></a>
+                                     <li>
+               <a href="http://127.0.0.1:8000/users/create" class=""><span>Buat</span></a>
             </li>
                          </ul>
              </li>
                         <li class="submenu">
-               <a href="javascript:void(0);"><i class="las la-user-tag"></i><span> Manage</span> <span class="menu-arrow"></span></a>
+               <a href="javascript:void(0);"><i class="las la-user-tag"></i><span> Kelola</span> <span class="menu-arrow"></span></a>
                <ul>
-                  <li><a href="http://127.0.0.1:8000/roles" class="">Roles</a></li>
-                  
-                                    <li><a href="http://127.0.0.1:8000/roles/create" class="active">Create</a></li>
+                  <li><a href="http://127.0.0.1:8000/roles" class="">Pangkat</a></li>
+
+                                    <li><a href="http://127.0.0.1:8000/roles/create" class="active">Buat</a></li>
                                  </ul>
             </li>
                         
                     <li class="submenu">
-            <a href="javascript:void(0);"><i class="las la-briefcase"></i><span> WorkTypes</span> <span class="menu-arrow"></span></a>
+            <a href="javascript:void(0);"><i class="las la-briefcase"></i><span> Jenis Pekerjaan</span> <span class="menu-arrow"></span></a>
             <ul>
-               <li><a href="http://127.0.0.1:8000/worktypes" class="">WorkTypes</a></li>
-                              <li><a href="http://127.0.0.1:8000/worktypes/create" class="">Create</a></li>
+               <li><a href="http://127.0.0.1:8000/worktypes" class="">Jenis Pekerjaan</a></li>
+                              <li><a href="http://127.0.0.1:8000/worktypes/create" class="">Buat</a></li>
                            </ul>
          </li>
-                  
          
+
                    </ul>
        </div>
     </div>
- </div>            <div class="page-wrapper">
+ </div>
+            <div class="page-wrapper">
                 <div class="content container-fluid">
                     <div class="page-header">
    <div class="row align-items-center">
       <div class="col">
-         <h3 class="page-title">Create Role</h3>
+         <h3 class="page-title">Buat Pangkat</h3>
       </div>
       <div class="col-auto float-right ml-auto">
-         <a href="http://127.0.0.1:8000/roles" class="btn add-btn add-role"> Back </a>
+         <a href="http://127.0.0.1:8000/roles" class="btn add-btn add-role"> Kembali </a>
       </div>
    </div>
 </div>
-<form method="POST" action="http://127.0.0.1:8000/roles/store" accept-charset="UTF-8"><input name="_token" type="hidden" value="2GIXaQZp5TmMNSh4bhEQx11mVxxwwSkAtXwltFTs">
+<form method="POST" action="http://127.0.0.1:8000/roles/store" accept-charset="UTF-8"><input name="_token" type="hidden" value="wFeq8TOfJr1O0jRG4ODhqNsCURmMt02JSLhd4wPa">
 <div class="row">
    <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
       <div class="form-group">
-         <strong>Name:</strong>
+         <strong>Nama:</strong>
          <input placeholder="Name" class="form-control" name="name" type="text">
       </div>
    </div>
    <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
-         <strong>Permission:</strong>
+         <strong>Perizinan:</strong>
          <br/>
                   <label><input class="name" name="permission[]" type="checkbox" value="1">
          role-list</label>
@@ -177,7 +179,7 @@
                </div>
    </div>
    <div class="col-xs-12 col-sm-12 col-md-6 mt-3">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Kirim</button>
    </div>
 </div>
 </form>

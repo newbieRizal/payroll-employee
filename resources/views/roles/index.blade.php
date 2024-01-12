@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Roles
+Pangkat
 @endsection
 @section('content')
 <div class="page-header">
@@ -14,11 +14,11 @@ Roles
    @endif
    <div class="row align-items-center">
       <div class="col">
-         <h3 class="page-title">Roles</h3>
+         <h3 class="page-title">Pangkat</h3>
       </div>
       <div class="col-auto float-right ml-auto">
          @can('role-create')
-         <a href="{{ route('roles.create') }}" class="btn add-btn add-role"> Add </a>
+         <a href="{{ route('roles.create') }}" class="btn add-btn add-role"> Tambah </a>
          @endcan
       </div>
    </div>
@@ -28,9 +28,9 @@ Roles
       <thead>
          <tr>
             <th>#</th>
-            <th>Name</th>
-            <th>Created At</th>
-            <th>Action</th>
+            <th>Nama</th>
+            <th>Dibuat pada</th>
+            <th>Aksi</th>
          </tr>
       </thead>
       <tbody>
@@ -42,7 +42,7 @@ Roles
 @section('scripts')
     <script>
        $(function () {
-      
+
         var table = $('.data-table').DataTable({
             processing: false,
             serverSide: true,

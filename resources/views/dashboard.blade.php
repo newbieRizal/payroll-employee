@@ -8,7 +8,7 @@ Dashboard | SuperAdmin
 <div class="page-header">
     <div class="row">
         <div class="col-sm-12">
-            <h3 class="page-title">Welcome {{ auth()->user()->name }}!</h3>
+            <h3 class="page-title">Selamat datang {{ auth()->user()->name }}!</h3>
         </div>
     </div>
 </div>
@@ -20,7 +20,7 @@ Dashboard | SuperAdmin
                 <span class="dash-widget-icon"><i class="fa fa-users"></i></span>
                 <div class="dash-widget-info">
                     <h3>{{ $employeescount }}</h3>
-                    <span>Employees</span>
+                    <span>Karyawan</span>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@ Dashboard | SuperAdmin
                 <span class="dash-widget-icon"><i class="las la-user-tie"></i></span>
                 <div class="dash-widget-info">
                     <h3>{{ $admincount }}</h3>
-                    <span>Managers</span>
+                    <span>Manajer</span>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@ Dashboard | SuperAdmin
             <div class="col-md-6 text-center">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Total Revenue</h3>
+                        <h3 class="card-title">Total Pendapatan</h3>
                         <div id="bar-charts"></div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ Dashboard | SuperAdmin
             <div class="col-md-6 text-center">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Sales Overview</h3>
+                        <h3 class="card-title">Tinjauan Penjualan</h3>
                         <div id="line-charts"></div>
                     </div>
                 </div>

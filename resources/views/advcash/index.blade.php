@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Advance Cash
+    Uang Muka
 @endsection
 
 @section('content')
@@ -16,11 +16,11 @@
     @endif
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="page-title">Advance Cash List</h3>
+        <h3 class="page-title">Daftar Uang Muka</h3>
       </div>
       <div class="col-auto float-right ml-auto">
         @can('worktype-create')
-        <a href="{{ route('cash.create') }}" class="btn add-btn add-advcash"> Add </a>
+        <a href="{{ route('cash.create') }}" class="btn add-btn add-advcash"> Tambah </a>
         @endcan
       </div>
     </div>
@@ -31,10 +31,10 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Employee Name</th>
-                <th>Date Of Advance</th>
-                <th>Amount</th>
-                <th>Action</th>
+                <th>Nama Karyawan</th>
+                <th>Tanggal Pembayaran di Muka</th>
+                <th>Jumlah</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@
 @section('scripts')
 <script>
      $(function () {
-      
+
       var table = $('.data-table').DataTable({
           processing: false,
           serverSide: true,
@@ -61,8 +61,8 @@
               {data: 'action', name: 'action', orderable: false,searchable: false},
           ]
       });
-      
-      
+
+
     });
 </script>
 @endsection

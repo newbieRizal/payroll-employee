@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title')
-{{ $user->name }}'s Advance Cash Debit history
+{{ $user->name }}'s Riwayat Debit Tunai di Muka
 @endsection
 @section('content')
 @if (count($errors) > 0)
 <div class="alert alert-danger mt-2">
-   <strong>Whoops!</strong>Something went wrong.<br><br>
+   <strong>Waduhhh!</strong>Ada yang tidak beres.<br><br>
    <ul>
       @foreach ($errors->all() as $error)
       <li>{{ $error }}</li>
@@ -16,17 +16,17 @@
 <div class="page-header">
    <div class="row align-items-center">
       <div class="col">
-         <h3 class="page-title">{{ $user->name }}'s Advance Cash Debit history</h3>
+         <h3 class="page-title">{{ $user->name }}'s Riwayat Debit Tunai di Muka</h3>
          <input type="hidden" name="user_id" value="{{ $user->id }}" id="user_id">
       </div>
       <div class="col-auto float-right ml-auto">
-         <button onclick="history.back()" class="btn add-btn"> Back </button>
+         <button onclick="history.back()" class="btn add-btn"> Kembali </button>
       </div>
    </div>
 </div>
 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 mb-1">
    <div class="stats-info" style="border: 1px solid black;">
-      <h6>Total Advance Debit Cash</h6>
+      <h6>Jumlah Uang Tunai Debit di Muka</h6>
       <h4 id="total_amount">{{ $total }}</h4>
    </div>
 </div>
@@ -52,9 +52,9 @@
                   <thead>
                      <tr>
                         <th>#</th>
-                        <th>Date</th>
-                        <th>Reason</th>
-                        <th>Amount</th>
+                        <th>Tanggal</th>
+                        <th>Alasan</th>
+                        <th>Jumlah</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -80,7 +80,7 @@
 </script>
 
 <script>
-   
+
     $(function () {
 
     var id = $('#user_id').val();
@@ -161,7 +161,7 @@
           return false;
 
       });
-     
+
    });
 </script>
 @endsection

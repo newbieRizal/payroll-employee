@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title')
-Users
+Pengguna
 @endsection
 @section('content')
 <div class="page-header">
    @if (count($errors) > 0)
    <div class="alert alert-danger mt-2">
-      <strong>Whoops!</strong>Something went wrong.<br><br>
+    <strong>Waduhhh!</strong>Ada yang tidak beres.<br><br>
       <ul>
          @foreach ($errors->all() as $error)
          <li>{{ $error }}</li>
@@ -32,11 +32,11 @@ Users
    @endif
    <div class="row align-items-center">
       <div class="col">
-         <h3 class="page-title">Users</h3>
+         <h3 class="page-title">Pengguna</h3>
       </div>
       <div class="col-auto float-right ml-auto">
          @can('user-create')
-         <a href="{{ route('users.create') }}" class="btn add-btn add-user"> Add </a>
+         <a href="{{ route('users.create') }}" class="btn add-btn add-user"> Tambah </a>
          @endcan
       </div>
    </div>
@@ -46,7 +46,7 @@ Users
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title">Add Addition</h5>
+            <h5 class="modal-title">Tambahkan Penambahan</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -67,7 +67,7 @@ Users
                   </div>
                </div>
                <div class="submit-section">
-                  <button class="btn btn-primary submit-btn btn-sm">Submit</button>
+                  <button class="btn btn-primary submit-btn btn-sm">Kirim</button>
                </div>
             </form>
          </div>
@@ -101,7 +101,7 @@ Users
 @section('scripts')
     <script>
        $(function () {
-      
+
         var table = $('.data-table').DataTable({
             processing: false,
             serverSide: true,

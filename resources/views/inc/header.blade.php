@@ -24,7 +24,7 @@
          <div class="dropdown-menu">
             <a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
-               document.getElementById('logout-form').submit();">Logout</a>
+               document.getElementById('logout-form').submit();">Keluar</a>
             <form id="logout-form" style="display:none;" action="{{ route('logout') }}" method="POST">
                @csrf
             </form>
@@ -34,10 +34,10 @@
    <div class="dropdown mobile-user-menu">
       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
       <div class="dropdown-menu dropdown-menu-right">
-         <a class="dropdown-item" href="login.html">Logout</a>
+         <a class="dropdown-item" href="login.html">Keluar</a>
       </div>
    </div>
 </div>
 
-<div class="loader" style="background: url('{{ asset('assets/img/loader/loading.gif') }}') 
+<div class="loader" style="background: url('{{ asset('assets/img/loader/loading.gif') }}')
 50% 50% no-repeat transparent;"></div>

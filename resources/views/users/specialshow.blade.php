@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Show User    
+Tampilkan Pengguna
 @endsection
 @section('content')
 <!-- Page Header -->
@@ -16,7 +16,7 @@ Show User
 <div class="row p-4" style="border: 1px solid;">
    <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
-         <strong>Name:</strong>
+         <strong>Nama:</strong>
          {{ $user->name }}
       </div>
    </div>
@@ -28,7 +28,7 @@ Show User
    </div>
    <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
-         <strong>Roles:</strong>
+         <strong>Pangkat:</strong>
          @if(!empty($user->getRoleNames()))
          @foreach($user->getRoleNames() as $v)
          <label class="badge bg-success p-1">{{ $v }}</label>

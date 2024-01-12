@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="main-wrapper">
-            @if ($page_name == 'Dashboard')
+            @if ($page_name == 'Dasbor')
             @include('inc.preloader')
             @endif
             @include('inc.header')

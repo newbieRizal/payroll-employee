@@ -1,7 +1,7 @@
 <?php
-    
+
 namespace App\Http\Controllers;
-    
+
 use DB;
 use Auth;
 use Hash;
@@ -14,7 +14,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-    
+
 class UserController extends Controller
 {
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
                     })
 
                     ->addColumn('action', function($data){
-                        
+
                         $btn = '';
 
                         $btn .= '<a href="'.route('users.show',$data->id).'" class="btn btn-sm btn-primary show-user"><i class="las la-eye"></i></a> ';
@@ -97,7 +97,7 @@ class UserController extends Controller
         return view('users.index')
             ->with($data2);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -109,7 +109,7 @@ class UserController extends Controller
         $roles = Role::pluck('name','name')->all();
 
         $worktypes = Worktype::all();
-        
+
         $data = [
            'page_name' => 'Create User',
            'roles' => $roles,
@@ -117,7 +117,7 @@ class UserController extends Controller
         ];
         return view('users.create')->with($data);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -133,7 +133,7 @@ class UserController extends Controller
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-    
+
         $input = $request->all();
 
         $user = new User();
@@ -148,12 +148,12 @@ class UserController extends Controller
         }
         $user->save();
         $user->assignRole($request->input('roles'));
-        
-    
+
+
         return redirect()->route('users.index')
                         ->with('success','User created successfully');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -164,36 +164,36 @@ class UserController extends Controller
     public function show(Request $request,$id)
     {
         $user = User::find($id);
-        
+
         if(!$user->hasRole('Manager')){
-            
+
             $data1 = Timesheet::query()->where('user_id',$id)
                            ->orderBy('date');
 
             $total = Timesheet::where('user_id',$id)
             ->whereBetween('date', array(date('Y-m-01'), date('Y-m-t')))
             ->sum('total');
-    
+
             $advancecash = CashAdvance::where('user_id',$id)
             ->whereBetween('date_advance',array(date('Y-m-01'),date('Y-m-t')))
             ->sum('amount');
 
             $advancecash = number_format((float)$advancecash, 2, '.', '');
-              
+
             $total = ($total - $advancecash);
 
             $total = number_format((float)$total, 2, '.', '');
 
             $user = User::withCount('timesheets')->find($id);
-    
+
             $worktype = Worktype::where('id',$user->work_type)->first();
-    
+
             $qtysum = Timesheet::where('user_id',$id)->whereMonth('date', date('m'))->sum('qty');
 
             $current_worktype_name = $worktype->name;
-    
+
             $current_worktype_price = $worktype->price;
-    
+
             $data = [
                 'user' => $user,
                 'page_name' => 'ShowUser',
@@ -203,34 +203,34 @@ class UserController extends Controller
                 'current_worktype_price' => $current_worktype_price,
                 'advancecash' => $advancecash
             ];
-    
+
             if ($request->ajax()) {
                 $data =  $data1;
                 return Datatables::of($data)
                         ->addIndexColumn()
-    
+
                         ->addColumn('work_type',function($data){
                             $user = User::find($data->user_id);
                             $worktype = Worktype::where('id',$user->work_type)->first();
                             return $worktype->name;
                         })
-    
+
                         ->addColumn('assign_date',function($data){
                             $date = date('d-m-Y',strtotime($data->date));
                             return $date;
                         })
-    
+
                         ->filter(function ($query) use ($request) {
                             if (!empty($request->get('from_date') || $request->get('to_date'))){
                                 $query->whereBetween('date', array($request->get('from_date'),$request->get('to_date')));
                             }
                         })
-                        
-    
+
+
                         ->rawColumns(['work_type'],['assign_date'])
                         ->make(true);
             }
-    
+
             if($user->parent_id == auth()->user()->id OR auth()->user()->hasRole('SuperAdmin')){
             return view('users.show')->with($data);
             }else{
@@ -238,7 +238,7 @@ class UserController extends Controller
             }
 
         }else{
-             
+
             $user = User::find($id);
 
             $data = [
@@ -247,12 +247,12 @@ class UserController extends Controller
             ];
 
             return view('users.specialshow')->with($data);
-             
+
         }
-        
+
 
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -263,7 +263,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        
+
         if($user->parent_id == auth()->user()->id){
             $roles = Role::pluck('name','name')->all();
             $userRole = $user->roles->pluck('name','name')->all();
@@ -279,7 +279,7 @@ class UserController extends Controller
         }else{
             return abort(404);
         }
-    
+
     }
 
     public function advcashlist(Request $request,$id){
@@ -294,7 +294,7 @@ class UserController extends Controller
         $total = CashAdvance::query()->where('user_id',$id)
         ->whereBetween('date_advance', array(date('Y-m-01'), date('Y-m-t')))->sum('amount');
 
-        $total = '₹ '.number_format((float)$total, 2, '.', '');
+        $total = 'Rp '.number_format((float)$total, 2, '.', '');
 
         $data1 = [
             'user' => $user,
@@ -323,7 +323,7 @@ class UserController extends Controller
 
         return view('users.advancelist')->with($data1);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -340,34 +340,34 @@ class UserController extends Controller
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
-    
+
         $input = $request->all();
-        
+
         $user = User::find($id);
         $user->name = $input['name'];
         $user->email = $input['email'];
-        if(!empty($input['password'])){ 
+        if(!empty($input['password'])){
             $user->password = Hash::make($input['password']);
         }
         $user->parent_id = auth()->user()->id;
-        $user->work_type = $input['work_type']; 
+        $user->work_type = $input['work_type'];
         $user->update();
-        
+
         DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
+
         $user->assignRole($request->input('roles'));
-    
+
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function destroy(Request $request,$id)
     {
         User::find($id)->delete();
